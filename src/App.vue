@@ -1,30 +1,54 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <app-nav />
+    <router-view />
+    <app-footer />
+  </div>
 </template>
+<script>
+import AppNav from '@/components/AppNav.vue';
+import AppFooter from '@/components/AppFooter.vue';
 
+export default {
+  components: {
+    AppNav,
+    AppFooter,
+  },
+};
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+/*------------ Variables -----------*/
+
+$brandprimary: #d96528;
+$brandsecondary: #03c1c1;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-nav {
-  padding: 30px;
+a,
+a:active,
+a:visited {
+  color: $brandprimary;
+  text-decoration: none;
+  transition: 0.3s all ease;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+button {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: black;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.3s all ease;
+  &:hover {
+    background: black;
+    border: 1px solid black;
+    color: white;
   }
 }
 </style>
