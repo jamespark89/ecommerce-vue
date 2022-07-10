@@ -28,7 +28,7 @@ export default {};
 .callout {
   width: 100%;
   height: 280px;
-  background: url('../assets/logo.png') center center no-repeat;
+  background: url('../../public/callout.jpg') center center no-repeat;
   background-size: cover;
   display: flex;
   justify-content: center;
