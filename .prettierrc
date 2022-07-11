@@ -1,7 +1,5 @@
 {
   "bracketSpacing": true,
   "singleQuote": true,
-  "useTabs": false,
-
-  "printWidth": 80
+  "printWidth": 100
 }
