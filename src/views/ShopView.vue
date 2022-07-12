@@ -23,7 +23,7 @@
         </div>
         <h4 class="title">{{ item.title }}</h4>
         <h4 class="price">${{ item.price }}</h4>
-        <router-link to="">
+        <router-link :to="`products/${item.id}`">
           <button class="multi-item">View Item ></button>
         </router-link>
       </div>
@@ -37,7 +37,7 @@ export default {
     return {
       isActive: false,
       isDeactive: false,
-      min: 0,
+      min: 10,
       max: 1000,
       pricerange: 500,
     };
