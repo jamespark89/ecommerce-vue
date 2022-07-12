@@ -14,6 +14,9 @@ export default {
     AppNav,
     AppFooter,
   },
+  created() {
+    this.$store.dispatch('fetchData');
+  },
 };
 </script>
 <style lang="scss">

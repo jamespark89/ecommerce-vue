@@ -5,9 +5,7 @@ export default createStore({
   state: {
     products: [],
   },
-  getters: {
-    getProducts: (state) => state.products,
-  },
+  getters: {},
   mutations: {
     allproducts(state, fetchdata) {
       state.products = fetchdata;

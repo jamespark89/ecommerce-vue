@@ -1,19 +1,13 @@
 <template>
   <footer>
     <section class="callout">
-      <h2>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis ullam
-        ratione ad consequuntur beatae quo autem rem harum aspernatur, molestias
-        facere, iure cum, molestiae error. Obcaecati blanditiis repellendus
-        error amet.
-      </h2>
+      <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum, veniam.</h2>
       <p>James Park</p>
     </section>
 
     <div class="jamesstuff">
       <p>
         This project is made by James Park,
-
         <a href="https://github.com/jamespark89">@jamespark89 (github)</a>
       </p>
     </div>
