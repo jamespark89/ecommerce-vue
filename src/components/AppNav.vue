@@ -68,15 +68,14 @@ nav {
   background: black;
   color: white;
   font-size: 10px;
-  // padding: 3px;
   top: -22px;
   right: -12px;
   width: 25px;
-  text-align: center;
   height: 25px;
-  font-size: 10px;
-  padding: 6px 10px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width: 850px) {
   h1 {

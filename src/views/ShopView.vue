@@ -13,7 +13,14 @@
           <strong>${{ pricerange }}</strong>
         </p>
         <label for="pricebar">
-          <input class="pricebar" type="range" v-model="pricerange" :min="min" :max="max" />
+          <input
+            class="pricebar"
+            type="range"
+            step="10"
+            v-model="pricerange"
+            :min="min"
+            :max="max"
+          />
         </label>
         <span class="min">${{ min }}</span>
         <span class="max">${{ max }}</span>
@@ -44,7 +51,7 @@ export default {
       isDeactive: false,
       min: 10,
       max: 1000,
-      pricerange: 500,
+      pricerange: 1000,
     };
   },
   methods: {
@@ -75,7 +82,7 @@ export default {
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     padding: 0 !important;
     .price {
@@ -107,13 +114,13 @@ export default {
 @media (max-width: 600px) {
   .content {
     width: 100%;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
   .content {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 // aside

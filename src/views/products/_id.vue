@@ -22,7 +22,6 @@ export default {
     return {
       id: this.$route.params.id,
       quantity: 1,
-      tempcart: [],
     };
   },
   computed: {
@@ -38,9 +37,7 @@ export default {
         ...item,
         quantity: this.quantity,
       };
-      this.tempcart.push(item);
       this.$store.commit('addToCart', { ...item });
-      console.log('addtocart');
     },
   },
 };

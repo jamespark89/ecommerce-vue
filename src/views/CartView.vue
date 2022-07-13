@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <h1 style="margin-top: 24px">Your cart</h1>
+    <h1>Your cart</h1>
     <section v-if="cart.length > 0">
       <table>
         <tr>
@@ -19,7 +19,9 @@
             <h4 class="price">${{ item.price }}</h4>
           </td>
           <td>
-            <strong> {{ item.quantity }}</strong>
+            <button @click="removeOneFromCart(item)">-</button>
+            <strong style="margin: 1rem"> {{ item.quantity }}</strong>
+            <button @click="addOneToCart(item)">+</button>
           </td>
           <td>${{ item.quantity * item.price }}</td>
           <td>
@@ -30,24 +32,50 @@
     </section>
 
     <section v-else class="center">
-      <p>Your cart is empty, fill it up!</p>
-      <button class="pay-with-stripe">
-        <router-link exact to="/">Back Home</router-link>
-      </button>
+      <p style="margin-top: 24px">Your cart is empty, fill it up!</p>
+      <router-link exact to="/shop"
+        ><button style="margin: 24px" class="pay-with-stripe">Go to Shop</button></router-link
+      >
     </section>
+    <div class="total">
+      <div class="list">
+        <p>
+          <strong>Subtotal:</strong>
+        </p>
+        <p>Shipping:</p>
+        <p class="golden">ToTal:</p>
+      </div>
+      <div class="num">
+        <p>
+          <strong>${{ cartTotal }}</strong>
+        </p>
+        <p>Free Shipping</p>
+        <p class="golden">${{ cartTotal }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   computed: {
     ...mapState(['cart']),
+    ...mapGetters(['cartTotal']),
   },
   methods: {
     addToCart(item) {
       this.$store.commit('addToCart', item);
+    },
+    removeAllFromCart(item) {
+      this.$store.commit('removeAllFromCart', item);
+    },
+    removeOneFromCart(item) {
+      this.$store.commit('removeOneFromCart', item);
+    },
+    addOneToCart(item) {
+      this.$store.commit('addOneToCart', item);
     },
   },
 };
@@ -57,6 +85,7 @@ export default {
 .cart {
   width: 80vw;
   text-align: center;
+  margin: 1rem;
 }
 .product-img {
   float: left;
@@ -84,5 +113,20 @@ th {
 .product-name {
   float: left;
   padding-top: 36px;
+}
+.total {
+  float: right;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    margin-top: 1rem;
+  }
+  .golden {
+    background: #f2eee2;
+    font-weight: bold;
+    padding: 10px;
+  }
 }
 </style>
