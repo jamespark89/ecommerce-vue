@@ -1,5 +1,8 @@
 <template>
   <div class="store">
+    <section v-if="filteredProducts.length === 0">
+      <app-loading />
+    </section>
     <div class="filter">
       <button @click="showFilter" class="filterbtn">Filter</button>
       <aside :class="{ active: isActive, deactive: isDeactive }" class="filter-container">
@@ -32,6 +35,8 @@
 </template>
 
 <script>
+import AppLoading from '../components/AppLoading.vue';
+
 export default {
   data() {
     return {
@@ -57,6 +62,7 @@ export default {
       return this.$store.state.products.filter((el) => el.price < this.pricerange);
     },
   },
+  components: { AppLoading },
 };
 </script>
 
@@ -65,38 +71,37 @@ export default {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-}
-.content {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding: 0 !important;
-}
-
-.img-container {
-  height: 200px;
-  max-width: 200px;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  img {
+  .content {
+    height: 100%;
     width: 100%;
-    max-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding: 0 !important;
+    .price {
+      margin: 1rem;
+      font-size: 1.2rem;
+    }
+    .item {
+      max-height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 20px 0;
+      .img-container {
+        height: 200px;
+        max-width: 200px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        img {
+          width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
   }
-}
-.price {
-  margin: 1rem;
-  font-size: 1.2rem;
-}
-.item {
-  max-height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 20px 0;
 }
 
 @media (max-width: 600px) {
@@ -125,17 +130,21 @@ export default {
   background: #fafafa;
   height: 100vh;
   display: none;
+  .pricebar {
+    width: 100%;
+  }
+  .max {
+    float: right;
+  }
+  .xbtn {
+    float: right;
+  }
 }
 .active {
   display: block;
   animation: openFilter 0.2s;
 }
-.pricebar {
-  width: 100%;
-}
-.max {
-  float: right;
-}
+
 .deactive {
   display: block;
   animation: closeFilter 0.2s forwards;
@@ -153,8 +162,5 @@ export default {
   100% {
     right: -300px;
   }
-}
-.xbtn {
-  float: right;
 }
 </style>

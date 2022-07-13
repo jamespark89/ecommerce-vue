@@ -21,12 +21,26 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
+      quantity: 1,
+      tempcart: [],
     };
   },
   computed: {
     ...mapState(['products']),
     product() {
       return this.products.find((el) => el.id === Number(this.id));
+    },
+  },
+  methods: {
+    cartAdd() {
+      let item = this.product;
+      item = {
+        ...item,
+        quantity: this.quantity,
+      };
+      this.tempcart.push(item);
+      this.$store.commit('addToCart', { ...item });
+      console.log('addtocart');
     },
   },
 };

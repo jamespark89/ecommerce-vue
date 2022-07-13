@@ -5,13 +5,23 @@
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/shop">Shop</router-link></li>
+        <li>
+          <div class="carttotal" v-if="cartCount > 0">{{ cartCount }}</div>
+          <router-link to="/cart">Cart</router-link>
+        </li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters(['cartCount']),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +62,22 @@ nav {
     }
   }
 }
-
+.carttotal {
+  position: absolute;
+  border-radius: 100%;
+  background: black;
+  color: white;
+  font-size: 10px;
+  // padding: 3px;
+  top: -22px;
+  right: -12px;
+  width: 25px;
+  text-align: center;
+  height: 25px;
+  font-size: 10px;
+  padding: 6px 10px;
+  font-weight: bold;
+}
 @media screen and (max-width: 850px) {
   h1 {
     margin: 0;

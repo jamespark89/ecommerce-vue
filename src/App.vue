@@ -1,7 +1,9 @@
 <template>
   <div>
     <app-nav />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
     <app-footer />
   </div>
 </template>
@@ -53,5 +55,9 @@ button {
     border: 1px solid black;
     color: white;
   }
+}
+main {
+  display: flex;
+  justify-content: center;
 }
 </style>
