@@ -7,6 +7,11 @@
       <h1 style="margin-top: 1rem">{{ product.title }}</h1>
       <h2 class="price" style="margin-top: 1rem">${{ product.price }}</h2>
       <p style="font-size: 1.2rem; margin-top: 1rem">{{ product.description }}</p>
+      <div class="quantity" style="margin-top: 1rem">
+        <button @click="this.quantity > 0 ? this.quantity-- : (this.quantity = 0)">-</button>
+        <strong style="margin: 1rem"> {{ quantity }}</strong>
+        <button @click="this.quantity++">+</button>
+      </div>
       <button style="font-size: 1.2rem; margin-top: 1rem" class="button purchase" @click="cartAdd">
         Add to Cart
       </button>

@@ -40,7 +40,7 @@ export default {
   position: relative;
   width: 125px;
   height: 125px;
-  margin: auto;
+  margin: 3rem auto;
   transform: scale(var(--scale));
 }
 .preloader > span {

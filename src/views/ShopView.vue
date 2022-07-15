@@ -3,7 +3,7 @@
     <section v-if="filteredProducts.length === 0">
       <app-loading />
     </section>
-    <div class="filter">
+    <div v-else class="filter">
       <button @click="showFilter" class="filterbtn">Filter</button>
       <aside :class="{ active: isActive, deactive: isDeactive }" class="filter-container">
         <button @click="closeFilter" class="xbtn">x</button>

@@ -29,37 +29,39 @@
           </td>
         </tr>
       </table>
+      <div class="total">
+        <div class="list">
+          <p>
+            <strong>Subtotal:</strong>
+          </p>
+          <p>Shipping:</p>
+          <p class="golden">ToTal:</p>
+        </div>
+        <div class="num">
+          <p>
+            <strong>${{ cartTotal }}</strong>
+          </p>
+          <p>Free Shipping</p>
+          <p class="golden">${{ cartTotal }}</p>
+        </div>
+      </div>
     </section>
-
     <section v-else class="center">
       <p style="margin-top: 24px">Your cart is empty, fill it up!</p>
       <router-link exact to="/shop"
         ><button style="margin: 24px" class="pay-with-stripe">Go to Shop</button></router-link
       >
     </section>
-    <div class="total">
-      <div class="list">
-        <p>
-          <strong>Subtotal:</strong>
-        </p>
-        <p>Shipping:</p>
-        <p class="golden">ToTal:</p>
-      </div>
-      <div class="num">
-        <p>
-          <strong>${{ cartTotal }}</strong>
-        </p>
-        <p>Free Shipping</p>
-        <p class="golden">${{ cartTotal }}</p>
-      </div>
-    </div>
+    <app-sales-boxes />
   </div>
 </template>
 
 <script>
+import AppSalesBoxes from '@/components/AppSalesBoxes.vue';
 import { mapState, mapGetters } from 'vuex';
 
 export default {
+  components: { AppSalesBoxes },
   computed: {
     ...mapState(['cart']),
     ...mapGetters(['cartTotal']),
@@ -83,7 +85,6 @@ export default {
 
 <style lang="scss" scoped>
 .cart {
-  width: 80vw;
   text-align: center;
   margin: 1rem;
 }
@@ -115,7 +116,7 @@ th {
   padding-top: 36px;
 }
 .total {
-  float: right;
+  margin-left: auto;
   width: 50%;
   display: flex;
   justify-content: space-between;
